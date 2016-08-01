@@ -1,5 +1,9 @@
 #rest api
 
+## /login_qr
+### get 
+   login 
+
 ## /users
 ###get
  get all user

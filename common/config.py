@@ -20,6 +20,7 @@ PROD = str2bool(os.getenv('PROD', "False"))  # 开启线上环境，减少日志
 APP_SENTRY_KEY=os.getenv('APP_SENTRY_KEY','')
 
 APP_BASE_URL=os.getenv('APP_BASE_URL','http://127.0.0.1:5000')
+LOGIN_PIC=os.getenv('APP_LOGIN_PIC','png')
 
 if __name__ == '__main__':
     pass

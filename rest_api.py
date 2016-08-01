@@ -22,7 +22,7 @@ import logging
 import common.api_errors as api_errors
 LOG = logging.getLogger(__name__)
 
-from flask import Flask, request
+from flask import Flask, request,url_for
 from flask_restful import Resource, Api
 
 import common.config as config
@@ -93,6 +93,10 @@ class messages(Resource):
         wechat_utils.send_msg(user_name,message)
         return {"result":"success"}, 201
 
+@app.route('/login_qr')
+def login():
+    return url_for('static', filename='qr.png')
+
 api.add_resource(home, '/')
 api.add_resource(users, '/users')
 api.add_resource(messages, '/messages')
@@ -108,7 +112,7 @@ def run_api_backend():
 
 def run():
     run_api_backend()
-    wechat_utils.conf['qr'] = 'tty'
+    wechat_utils.conf['qr'] = config.LOGIN_PIC
     wechat_utils.run()
 
 if __name__ == '__main__':

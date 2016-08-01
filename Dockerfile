@@ -11,6 +11,7 @@ ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 ADD src /code
+RUN mkdir -p  static &&  ln -s ../qr.png static/qr.png
 
 EXPOSE 5000
 
