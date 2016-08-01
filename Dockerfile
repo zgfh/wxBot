@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -qqy install python-pip && pip install --upgrade p
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-ADD src /code
+ADD . /code
 RUN mkdir -p  static &&  ln -s ../qr.png static/qr.png
 
 EXPOSE 5000
