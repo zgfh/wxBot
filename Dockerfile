@@ -13,8 +13,8 @@ RUN pip install -r requirements.txt
 ADD . /code
 RUN mkdir -p  static &&  ln -s ../qr.png static/qr.png
 
-EXPOSE 5000
+EXPOSE 8000
 
 
 # Start python
-CMD ["python2", "rest_api.py"]
+CMD ["python2", "app.py"]

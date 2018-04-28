@@ -66,7 +66,7 @@ class home(Resource):
 class users(Resource):
     def get(self):
         user = request.args.get('user', None)
-        LOG.debug("select user with [{}]".format(user))
+        LOG.debug(u"select user with [{}]".format(user))
         result={"contacts":wechat_utils.contact_list,"groups":wechat_utils.group_list}
         return result, 200
 
@@ -102,7 +102,7 @@ api.add_resource(users, '/users')
 api.add_resource(messages, '/messages')
 
 def api_run():
-    app.run(host='0.0.0.0', debug=False)
+    app.run(host='0.0.0.0',port=8000, debug=False)
 
 def run_api_backend():
     t= threading.Thread(target=api_run)
@@ -112,7 +112,6 @@ def run_api_backend():
 
 def run():
     run_api_backend()
-    wechat_utils.conf['qr'] = config.LOGIN_PIC
     wechat_utils.run()
 
 if __name__ == '__main__':
